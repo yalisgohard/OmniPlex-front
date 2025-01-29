@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { User } from '../models/user.model';
 
@@ -17,11 +17,15 @@ export class AuthService {
   private BASE_URL = 'http://localhost:3300/api/';
   private document = inject(DOCUMENT);
 
-  user = signal<User | null | undefined>(undefined);
+  user = signal<User | undefined>(undefined);
 
-  constructor() {}
+  constructor() {
+    effect(() => {
+      console.log('User:', this.user());
+    })
+  }
 
-  login(credentials: Credentials): Observable<User | null | undefined> {
+  login(credentials: Credentials): Observable<User | undefined> {
     return this.http.post<User>(this.BASE_URL + 'auth/signin/', credentials).pipe(
       tap((result: any) => {
         const token = result['token'];
@@ -36,7 +40,7 @@ export class AuthService {
     )
   }
 
-  getUser(): Observable<User | null | undefined> {
+  getUser(): Observable<User | undefined> {
     return this.http.get<User>(this.BASE_URL + 'user/').pipe(
       tap((result: any) => {
         const user = Object.assign(new User(), result);
@@ -51,6 +55,6 @@ export class AuthService {
   logout(): void {
     // Remove token from cookies
     this.document.cookie = 'token=; path=/; domain=localhost; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    this.user.set(null);
+    this.user.set(undefined);
   }
 }

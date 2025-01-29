@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
 export const isLoggedInGuard: CanActivateFn = (route, state) => {
 	const authService = inject(AuthService);
 
-	if (authService.user() == undefined) {
+	if (authService.user() === undefined) {
 		const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token=')); 
 
 		if (token) {
@@ -18,7 +18,7 @@ export const isLoggedInGuard: CanActivateFn = (route, state) => {
 			if (expiration * 1000 < new Date().getTime()) {
 				document.cookie = 'token=; path=/; domain=localhost; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 			} else {
-				const user = Object.assign(new User(), JSON.parse(decodedPayload).user);
+				const user = Object.assign(new User(), JSON.parse(decodedPayload));
 				authService.user.set(user);
 			}
 		}
