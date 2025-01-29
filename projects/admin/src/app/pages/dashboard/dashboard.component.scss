@@ -1,0 +1,15 @@
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    font-size: 2rem;
+}
+
+mat-card {
+    background-color: #252f2f;
+}
+
+mat-card:hover {
+    background-color: #252f2f58;
+}

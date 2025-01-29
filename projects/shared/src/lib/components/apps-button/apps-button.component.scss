@@ -1,0 +1,13 @@
+* {
+    color: white;
+}
+
+button[mat-fab] {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+}
+
+button[mat-menu-item], a[mat-menu-item] {
+    color: #83caca;
+}

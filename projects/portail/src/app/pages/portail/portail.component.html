@@ -1,0 +1,60 @@
+<button mat-raised-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Logout
+</button>
+
+<div id="container">
+    <div class="content">
+
+        <h2>Omniplex</h2>
+        <ul>
+            <li>
+                <button mat-fab
+                    (click)="navigateTo('admin')"
+                    matTooltip="Admin">
+                    <mat-icon>shield</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-fab
+                    disabled="true"
+                    (click)="navigateTo('')"
+                    matTooltip="Network">
+                    <mat-icon>webhook</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-fab
+                    disabled="true"
+                    (click)="navigateTo('')"
+                    matTooltip="Cloud">
+                    <mat-icon>cloud</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-fab
+                    disabled="true"
+                    (click)="navigateTo('')"
+                    matTooltip="Watch">
+                    <mat-icon>whatshot</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-fab
+                    disabled="true"
+                    (click)="navigateTo('')"
+                    matTooltip="Market">
+                    <mat-icon>wine_bar</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-fab
+                    disabled="true"
+                    (click)="navigateTo('')"
+                    matTooltip="Ajouter un lien">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

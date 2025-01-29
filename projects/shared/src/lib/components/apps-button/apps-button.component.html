@@ -1,0 +1,27 @@
+<button mat-fab [matMenuTriggerFor]="animals">
+    <mat-icon>blur_on</mat-icon>
+</button>
+
+
+<mat-menu #animals="matMenu">
+    <a href="http://localhost:4200/" mat-menu-item >
+        <mat-icon>home</mat-icon>
+        Portail
+    </a>
+    <button mat-menu-item [matMenuTriggerFor]="account">
+        <mat-icon>person</mat-icon>
+        mon compte
+    </button>
+</mat-menu>
+
+<mat-menu #account="matMenu">
+    <button mat-menu-item disabled>
+        <mat-icon>settings</mat-icon>
+        Paramètres
+    </button>
+    <button mat-menu-item (click)="onLogoutClick()">
+        <mat-icon>logout</mat-icon>
+        Déconnexion
+    </button>
+</mat-menu>
+

@@ -1,0 +1,21 @@
+<lib-apps-button (onLogout)="logout()"/>
+
+<h2>Bienvenue Admin</h2>
+
+<mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile>
+        <mat-card appearance="outlined">
+            <mat-card-content>whitelist</mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card appearance="outlined">
+            <mat-card-content>données sur le % des disques utilisé</mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">
+        <mat-card appearance="outlined">
+            <mat-card-content>tableu des utilisateurs</mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
