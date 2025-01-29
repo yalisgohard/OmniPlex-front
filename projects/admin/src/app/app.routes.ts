@@ -13,5 +13,6 @@ export const routes: Routes = [{
     }, {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [isLoggedInGuard]
+        canActivate: [isLoggedInGuard],
+        data: { requiredRoles: ["ADMIN"] }
 }];

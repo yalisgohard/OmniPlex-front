@@ -1,11 +1,13 @@
-import { CanActivateFn, GuardResult } from '@angular/router';
-import { catchError, map, of } from 'rxjs';
-import { User } from '../models/user.model';
+import { CanActivateFn, GuardResult, Router } from '@angular/router';
+import { User } from '../../models/user.model';
 import { inject } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { UnauthorizedComponent } from '../../components/unauthorized/unauthorized.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export const isLoggedInGuard: CanActivateFn = (route, state) => {
 	const authService = inject(AuthService);
+	const dialog = inject(MatDialog);
 
 	if (authService.user() === undefined) {
 		const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token=')); 
@@ -18,7 +20,7 @@ export const isLoggedInGuard: CanActivateFn = (route, state) => {
 			if (expiration * 1000 < new Date().getTime()) {
 				document.cookie = 'token=; path=/; domain=localhost; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 			} else {
-				const user = Object.assign(new User(), JSON.parse(decodedPayload));
+				const user = Object.assign(new User(), JSON.parse(decodedPayload).user);
 				authService.user.set(user);
 			}
 		}
@@ -26,6 +28,14 @@ export const isLoggedInGuard: CanActivateFn = (route, state) => {
 
 	if (!authService.user()) {
 		window.location.href = 'http://localhost:4200/auth?redirect=' + window.location.href; 
+		return false;
+	}
+
+	const requiredRoles = route.data['requiredRoles'] as [string];
+    const userRole = authService.user()?.role as string;
+
+	if (requiredRoles && !requiredRoles.includes(userRole)) {
+		dialog.open(UnauthorizedComponent, { disableClose: true });
 		return false;
 	}
 

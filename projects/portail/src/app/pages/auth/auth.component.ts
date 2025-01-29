@@ -11,8 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { User } from '../../../../../shared/src/lib/models/user.model';
-import { AuthServicePortail } from '../../services/auth/auth.service';
-import { Credentials } from '@shared';
+import { AuthService, Credentials } from '@shared';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -30,7 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AuthComponent {
 	private formBuilder = inject(FormBuilder);
-  private authService = inject(AuthServicePortail);
+  private authService = inject(AuthService);
   private router = inject(Router);
   private activeRoute = inject(ActivatedRoute);
 

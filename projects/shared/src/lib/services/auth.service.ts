@@ -22,7 +22,7 @@ export class AuthService {
   constructor() {
     effect(() => {
       console.log('User:', this.user());
-    })
+    });
   }
 
   login(credentials: Credentials): Observable<User | undefined> {

@@ -1,0 +1,21 @@
+<div class="dialog-container">
+    <mat-dialog-content>
+        <mat-icon>warning_amber</mat-icon>
+    </mat-dialog-content>
+    <h2 mat-dialog-title>Vous allez être rediriger</h2>
+    <mat-dialog-content>Vous n'êtes pas autorisé à acceder à cette application.</mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="redirect()">
+            <div class="container">
+                <p class="mat-caption">
+                    forcer la redirection
+                </p>
+                <div class="spinner-container">
+                    <div class="countdown">{{ getCountdown() >= 0 ? getCountdown() : 0}}</div>
+                    <mat-spinner mode="determinate" [value]="value" diameter="26" />
+                </div>
+            </div>
+        </button>
+    </mat-dialog-actions>
+</div>

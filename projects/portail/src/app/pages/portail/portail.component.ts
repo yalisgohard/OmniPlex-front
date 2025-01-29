@@ -3,18 +3,22 @@ import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AuthServicePortail } from './../../services/auth/auth.service';
+import { AuthService, User } from '@shared';
+import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AddLinkDialogComponent } from '../../components/add-link-dialog/add-link-dialog.component';
 
 @Component({
   selector: 'app-portail',
-  imports: [MatButtonModule, MatIconModule, MatTooltipModule],
+  imports: [MatButtonModule, MatIconModule, MatTooltipModule, CommonModule],
   templateUrl: './portail.component.html',
   styleUrl: './portail.component.scss'
 })
 export class PortailComponent {
 
   private router = inject(Router);
-  authService = inject(AuthServicePortail);
+  private dialog = inject(MatDialog);
+  authService = inject(AuthService);
 
   logout() {
     this.authService.logout();
@@ -24,7 +28,7 @@ export class PortailComponent {
   navigateTo(app: string) {
     let route: string = '';
 
-    switch (app) {
+    switch (app.toLowerCase()) {
       case 'admin':
         route = 'http://localhost:4201/auth';
         break;
@@ -33,5 +37,26 @@ export class PortailComponent {
     }
 
     window.location.href = route;
+  }
+
+  getIcon(app: string): string {
+    switch (app.toLowerCase()) {
+      case 'admin':
+        return 'shield';
+      case 'network':
+        return 'webhook';
+      case 'cloud':
+        return 'cloud';
+      case 'watch':
+        return 'whatshot';
+      case 'market':
+        return 'wine_bar';
+      default:
+        return '';
+    }
+  }
+
+  addLink() {
+    this.dialog.open(AddLinkDialogComponent);
   }
 }

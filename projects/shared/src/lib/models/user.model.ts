@@ -3,5 +3,5 @@ export class User {
     last_name: string = '';
     email: string = '';
     role: string = '';
-    allowedApps: [] = [];
+    allowedApps: [string | null] = [null];
 }

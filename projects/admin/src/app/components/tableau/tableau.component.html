@@ -6,7 +6,7 @@
     </thead>
     <tbody>
         <tr>
-            <td *ngFor="let column of columns">{{ authService.user()?.first_name }}</td>
+            <td *ngFor="let column of columns">{{ authService.user()?.[column] }}</td>
         </tr>
     </tbody>
 </table>
