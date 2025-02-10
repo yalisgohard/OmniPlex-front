@@ -3,20 +3,21 @@
     Logout
 </button>
 
-<h1>Bonjour {{authService.user()?.first_name ?? ''}}</h1>
+<!-- TODO: ajout de la photo de profil -->
+<h1>⚪ Bonjour {{authService.user()?.first_name ?? ''}}</h1>
 
 <div id="container">
-    <div class="content">
 
-        <h2>Omniplex</h2>
+  <mat-card appearance="outlined">
+        <h2 mat-card-title>Omniplex</h2>
         <ul>
-            @for (app of authService.user()?.allowedApps; track $index) {
+            @for (app of Apps; track $index) {
                 <li>
-                    <button mat-fab
-                        (click)="navigateTo(app ?? '')"
-                        [matTooltip]="app">
-                        <mat-icon>{{getIcon(app ?? '')}}</mat-icon>
-                    </button>
+                    <a mat-fab
+                        [href]="app.url"
+                        [matTooltip]="app.name">
+                        <mat-icon>{{app.icon}}</mat-icon>
+                    </a>
                 </li>
             }
             <li>
@@ -27,5 +28,20 @@
                 </button>
             </li>
         </ul>
-    </div>
+    </mat-card>
+
+
+  <mat-card appearance="outlined">
+    <h3 mat-card-title>Todo List</h3>
+    <p mat-card-subtitle>refaire la maquette pour bien refaire le back</p>
+    <p mat-card-subtitle>faire une application de todo list</p>
+    <p mat-card-subtitle>ajout des demandes dans whiteliste</p>
+    <p mat-card-subtitle>ajouter les pp par défaut</p>
+    <p mat-card-subtitle>ajouter le market</p>
+  </mat-card>
 </div>
+
+<a mat-button [routerLink]="[ '/params' ]" id="params">
+  <mat-icon>settings</mat-icon>
+  Paramètres
+</a>

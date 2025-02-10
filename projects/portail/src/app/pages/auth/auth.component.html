@@ -1,23 +1,77 @@
 <div id="container">
-	<form (submit)="login()" [formGroup]="loginFormGroup">
-		<h2>
-			Se Connecter
-		</h2>
-		<mat-form-field>
-			<mat-label>email</mat-label>
-			<input matInput type="email" 
+  <mat-card appearance="outlined" *ngIf="authBoolean(); else loginTemplate">
+    <form (submit)="signin()" [formGroup]="signinFormGroup">
+      <h2>
+        Se Connecter
+      </h2>
+      <mat-form-field>
+        <mat-label>email</mat-label>
+        <input matInput type="email"
+                  formControlName="email"
+                  placeholder="Ex. pat@example.com">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>mot de passe</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+      <button mat-raised-button [disabled]="signinFormGroup.invalid">
+        Se Connecter
+      </button>
+      <button mat-button type="button"
+        (click)="authBoolean.set(false)">
+        s'inscrire
+      </button>
+      @if (invalidCredentials) {
+        <mat-error>Identifiants incorrect</mat-error>
+      }
+    </form>
+  </mat-card>
+
+  <ng-template #loginTemplate>
+    <mat-card appearance="outlined" *ngIf="authBoolean; else loginTemplate">
+      <form (submit)="signup()" [formGroup]="signupFormGroup">
+        <h2>
+          S'inscrire
+        </h2>
+        <mat-form-field>
+          <mat-label>first name</mat-label>
+          <input matInput type="text"
+                formControlName="first_name"
+                placeholder="Votre prénom">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>last name</mat-label>
+          <input matInput type="text"
+                formControlName="last_name"
+                placeholder="Votre nom de famille">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>phone</mat-label>
+          <input matInput type="tel"
+                formControlName="phone"
+                placeholder="Ex. 1234567890">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>email</mat-label>
+          <input matInput type="email"
                 formControlName="email"
                 placeholder="Ex. pat@example.com">
-		</mat-form-field>
-		<mat-form-field>
-			<mat-label>mot de passe</mat-label>
-			<input matInput type="password" formControlName="password">
-		</mat-form-field>
-		<button mat-raised-button [disabled]="loginFormGroup.invalid">
-			Se Connecter
-		</button>
-		@if (invalidCredentials) {
-			<mat-error>Identifiants incorrect</mat-error>
-		}
-	</form>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>mot de passe</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button [disabled]="signupFormGroup.invalid">
+          S'inscrire
+        </button>
+        <button mat-button type="button"
+          (click)="authBoolean.set(true)">
+          se connecter
+        </button>
+        @if (invalidCredentials) {
+          <mat-error>Identifiants incorrect</mat-error>
+        }
+      </form>
+    </mat-card>
+  </ng-template>
 </div>

@@ -1,0 +1,36 @@
+<a mat-button [href]="urlBack" id="home">
+  <mat-icon>arrow_back_ios</mat-icon>
+  retour
+</a>
+
+<div class="container">
+  <p>{{authService.user()?.profile_picture}}</p>
+  <h1>Bonjour, {{authService.user()?.first_name}}</h1>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <button mat-button type="button" disabled>changer la pp</button>
+    <mat-form-field>
+      <mat-label>Prénom</mat-label>
+      <input matInput type="text" name="first_name" formControlName="first_name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nom de famille</mat-label>
+      <input matInput type="text" name="last_name" formControlName="last_name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>N° de tel</mat-label>
+      <input matInput type="tel" name="phone" formControlName="phone">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" name="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mot de passe</mat-label>
+      <input matInput type="password" name="password" formControlName="password">
+    </mat-form-field>
+    <button mat-raised-button
+      [disabled]="userForm.invalid"
+    >Enregistrer</button>
+  </form>
+</div>

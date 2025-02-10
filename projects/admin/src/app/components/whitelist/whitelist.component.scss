@@ -1,0 +1,55 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 100%;
+}
+
+.table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  min-width: 300px;
+  max-width: 800px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #101414;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #9dbdbd;
+    border-radius: 12px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #8ce9e9;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: #528e8e;
+  }
+
+  .email {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 24px;
+  }
+}
+
+th[mat-header-cell] {
+  height: 10px;
+  font-size: 1.2rem;
+}
+
+.add-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 16px;
+}

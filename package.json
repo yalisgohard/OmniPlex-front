@@ -5,11 +5,10 @@
     "ng": "ng",
     "portail": "ng serve portail --port=4200",
     "admin": "ng serve admin --port=4201",
-    "params": "ng serve params --port=4202",
+    "market": "ng serve market --port=4202",
     "shared": "ng build shared --watch",
     "build:portail": "ng build portail-auth --configuration=production",
     "build:admin": "ng build admin --configuration=production",
-    "build:params": "ng build params --configuration=production",
     "build:shared": "ng build shared --configuration=production",
     "serve:ssr:portail-auth": "node dist/portail-auth/server/server.mjs"
   },

@@ -1,21 +1,70 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-bottom: 1rem;
-    background-color: #252f2f;
-    background-color: #1d2626;
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
 
-    thead {
-        background-color: #252f2f;
-        color: #fff;
-        font-size: 1.2rem;
-    }
+.search {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 16px;
+}
 
-    th, td {
-        padding: 0.5rem;
-        border-bottom: 1px solid #fff;
-        text-align: left;
-    }
+.table {
+  display: block;
+  overflow: auto;
+  width: 100%;
 
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #101414;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #9dbdbd;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #8ce9e9;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: #528e8e;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+input {
+  background-color: transparent;
+  padding: 6px 4px;
+  color: #fff;
+  border: none;
+  width: 120px;
+}
+
+mat-select {
+  min-width: 120px;
+}
+
+th[mat-header-cell] {
+  background-color: #0d3939;
+}
+
+td[mat-cell] {
+  background-color: transparent;
+}
+
+tr[mat-row]:hover {
+  background-color: #1d2322;
 }

@@ -4,21 +4,30 @@
 
 
 <mat-menu #animals="matMenu">
-    <a href="http://localhost:4200/" mat-menu-item >
-        <mat-icon>home</mat-icon>
-        Portail
-    </a>
+    <button mat-menu-item [matMenuTriggerFor]="apps">
+        <mat-icon>apps</mat-icon>
+        Apps
+    </button>
     <button mat-menu-item [matMenuTriggerFor]="account">
         <mat-icon>person</mat-icon>
         mon compte
     </button>
 </mat-menu>
 
+<mat-menu #apps="matMenu">
+  @for (app of Apps; track $index) {
+    <a mat-menu-item [href]="app.url">
+        <mat-icon>{{app.icon}}</mat-icon>
+        {{app.name}}
+    </a>
+  }
+</mat-menu>
+
 <mat-menu #account="matMenu">
-    <button mat-menu-item disabled>
+    <a mat-menu-item [href]="urlParams" >
         <mat-icon>settings</mat-icon>
         Paramètres
-    </button>
+    </a>
     <button mat-menu-item (click)="onLogoutClick()">
         <mat-icon>logout</mat-icon>
         Déconnexion
