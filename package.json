@@ -6,6 +6,7 @@
     "portail": "ng serve portail --port=4200",
     "admin": "ng serve admin --port=4201",
     "market": "ng serve market --port=4202",
+    "take": "ng serve take --port=4203",
     "shared": "ng build shared --watch",
     "build:portail": "ng build portail-auth --configuration=production",
     "build:admin": "ng build admin --configuration=production",

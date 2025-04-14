@@ -13,6 +13,10 @@ export const applications: IApp[] = [{
     url:"http://localhost:4202/",
     icon:'wine_bar'
   }, {
+    name: 'Take',
+    url:"http://localhost:4203/",
+    icon:'check'
+  }, {
     name: 'Network',
     url:"http://localhost:420",
     icon:'webhook'

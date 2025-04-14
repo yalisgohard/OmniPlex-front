@@ -5,6 +5,10 @@
   @include mat.snack-bar-overrides((
     container-color: #253030,
   ));
+
+  @include mat.form-field-overrides((
+    filled-container-color: transparent,
+  ));
 }
 
 html, body {
@@ -19,4 +23,10 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+mat-card {
+  border-radius: 20px;
+  background: linear-gradient(315deg, rgba(16,16,20,1) 0%, rgba(19,36,36,1) 100%);
+  box-shadow: 0 0 2px #00f7ff8d, inset 0 0 2px #00f7ff8d;
 }

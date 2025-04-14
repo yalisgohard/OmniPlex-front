@@ -19,6 +19,7 @@ export enum EApps {
   PORTAIL = 'Portail',
   ADMIN = 'Admin',
   MARKET = 'Market',
+  TAKE = 'Take',
 }
 
 export interface IApp {

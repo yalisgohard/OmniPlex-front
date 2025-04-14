@@ -10,6 +10,7 @@ export const isLoggedInGuard: CanActivateFn = (route, state) => {
 	const dialog = inject(MatDialog);
 
 	if (authService.user() === undefined) {
+    // TODO : Refactor this to use a call api for more security
 		const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token='));
 
 		if (token) {

@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Liste des applications</h2>
+<mat-dialog-content>
+  <form>
+    <mat-form-field class="example-chip-list">
+      <mat-label>Favorite Apps</mat-label>
+      <mat-chip-grid #chipGrid aria-label="App selection">
+        @for (app of apps(); track $index) {
+          <mat-chip-row (removed)="remove(app)">
+            {{app}}
+            <button matChipRemove [attr.aria-label]="'remove ' + app">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input
+        name="currentApp"
+        placeholder="New App..."
+        #appInput
+        [(ngModel)]="currentApp"
+        [matChipInputFor]="chipGrid"
+        [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event); appInput.value = ''">
+        @for (app of filteredApps(); track app) {
+          <mat-option [value]="app">{{app}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>
+      <mat-icon>cancel</mat-icon>
+      annuler
+  </button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="apps()">
+      <mat-icon>save</mat-icon>
+      enregistrer
+  </button>
+</mat-dialog-actions>

@@ -2,9 +2,8 @@
     <mat-icon>blur_on</mat-icon>
 </button>
 
-
 <mat-menu #animals="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="apps">
+    <button mat-menu-item [matMenuTriggerFor]="apps" *ngIf="Apps.length > 0">
         <mat-icon>apps</mat-icon>
         Apps
     </button>

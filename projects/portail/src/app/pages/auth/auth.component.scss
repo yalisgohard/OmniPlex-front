@@ -1,6 +1,3 @@
-@use '@angular/material' as mat;
-
-
 #container {
     display: flex;
     align-items: center;
@@ -9,26 +6,19 @@
     height: 100%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    border-radius: 20px;
-    padding: 36px;
-    background-color: #161d1d;
-    border: 1px solid #fff;
-    box-shadow: 0 0 6px #00f7ff, inset 0 0 6px #00f7ff;
+mat-card {
+  form {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      border-radius: 20px;
+      padding: 36px;
 
-    @include mat.form-field-overrides((
-        filled-container-color: #1d2626,
-    ));
+      button {
+        margin: 8px 0 0 0;
+      }
 
-    button[mat-raised-button] {
-        margin: 16px 16px 0 16px;
-        background-color: #252f2f35;
-        border: 1px solid #adfcff92;
-        box-shadow: 0 0 2px #00f7ff8d, inset 0 0 2px #00f7ff8d;
-    }
+  }
 }
 
 mat-error {
@@ -37,6 +27,6 @@ mat-error {
 }
 
 h2 {
-    margin: 0 0 16px 4px;
+    margin: 0 0 48px 4px;
     font-size: 1.2rem;
 }

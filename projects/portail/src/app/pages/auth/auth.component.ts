@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
-import { first, Subscription } from 'rxjs';
+import { catchError, first, Observable, of, Subscription } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -81,8 +81,6 @@ export class AuthComponent {
       },
       error: () => {
         this.invalidCredentials = true;
-        //TODO: vérifier si c'est un Invalid ou Non dans la whitelist
-        alert('Invalid credentials');
       }
     }))
 	}

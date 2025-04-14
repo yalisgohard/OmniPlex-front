@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthService, applications } from '@shared';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-apps-button',
@@ -11,7 +12,9 @@ import { AuthService, applications } from '@shared';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    MatMenuModule],
+    MatMenuModule,
+    CommonModule,
+  ],
   templateUrl: './apps-button.component.html',
   styleUrl: './apps-button.component.scss'
 })
@@ -20,7 +23,7 @@ export class AppsButtonComponent {
   private authService = inject(AuthService);
   activApp = input<string | null>();
 
-  urlParams:string = 'http://localhost:4200/params' + '?redirect=' + window.location.href;
+  urlParams:string = `${'http://localhost:4200'}/params?redirect=${window.location.href}`;
 
   Apps: {
     name: string,

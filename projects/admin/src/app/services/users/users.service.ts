@@ -27,7 +27,17 @@ export class UsersService {
 
   updateUser(user: User): Observable<User> {
     if (!user.id) throw new Error('User id is required');
-    return this.http.put<User>(`http://localhost:3300/api/admin/user/${user.id}`, user).pipe(
+    const userToUpdate = Object.assign({
+      id: user.id,
+      email: user.email,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      phone: user.phone,
+      role: user.role,
+      allowed_apps: user.allowed_apps,
+      profile_picture: user.profile_picture,
+    }, user);
+    return this.http.put<User>(`http://localhost:3300/api/admin/user/${user.id}`, userToUpdate).pipe(
       map(() => user)
     );
   }

@@ -14,7 +14,7 @@
         <mat-label>mot de passe</mat-label>
         <input matInput type="password" formControlName="password">
       </mat-form-field>
-      <button mat-raised-button [disabled]="signinFormGroup.invalid">
+      <button mat-flat-button [disabled]="signinFormGroup.invalid">
         Se Connecter
       </button>
       <button mat-button type="button"
@@ -61,7 +61,7 @@
           <mat-label>mot de passe</mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
-        <button mat-raised-button [disabled]="signupFormGroup.invalid">
+        <button mat-flat-button [disabled]="signupFormGroup.invalid">
           S'inscrire
         </button>
         <button mat-button type="button"
